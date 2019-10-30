@@ -1,12 +1,10 @@
 (ns todolist.components.main
-  (:require [reagent.core :as r :refer [atom]]
-            [todolist.components.form :refer (form)]
-            [todolist.components.items-list :refer (items-list)]))
+  (:require 
+   [todolist.components.add-todo :refer (add-todo)]
+   [todolist.components.todos-list :refer (todos-list)]))
 
-(defonce data (atom [{:id 0 :text "Test1" :active true}
-                     {:id 1 :text "Test2" :active true}]))
-
-(defn main [] [:main {:class "main"}
-               [:h1 "Todo's List"]
-               [form]
-               [items-list data]])
+(defn main []
+  [:main {:class "main"}
+   [:h1 "Todo's List"]
+   [add-todo]
+   [todos-list]])

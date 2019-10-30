@@ -1,6 +1,7 @@
 (ns todolist.core
-  (:require [reagent.core :as reagent]
-            [todolist.components.main :refer (main)]))
+  (:require 
+   [reagent.core :as reagent]
+   [todolist.components.main :refer (main)]))
 
 (defn start []
   (reagent/render-component [main]
