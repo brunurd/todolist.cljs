@@ -3,24 +3,23 @@
    [reagent.core :as r]
    [todolist.state :refer (add-todo!)]))
 
-(def new-task (r/atom ""))
+(def new-todo (r/atom ""))
 
 (defn add-todo []
   (let [on-change-handler (fn [e]
                             (let [value (-> e .-target .-value)]
-                              (reset! new-task value)))
+                              (reset! new-todo value)))
         on-submit-handler (fn [e]
                             (.preventDefault e)
-                            (when (not (= @new-task ""))
+                            (when (not (= @new-todo ""))
                               (add-todo! {:id (js/Date.now)
                                     :active true
-                                    :name @new-task})
-                              (reset! new-task "")))]
+                                    :name @new-todo})
+                              (reset! new-todo "")))]
     [:form {:class "form"
             :onSubmit on-submit-handler}
-     [:input {:name "new-task"
-              :type "text"
-              :placeholder "Type a task here..."
-              :value @new-task
+     [:input {:type "text"
+              :placeholder "Type a todo text here..."
+              :value @new-todo
               :on-change on-change-handler}]
      [:button {:type "submit" :style {:margin-left 12}} "Add"]]))

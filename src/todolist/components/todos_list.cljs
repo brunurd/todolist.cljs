@@ -1,9 +1,9 @@
 (ns todolist.components.todos-list
   (:require
    [todolist.components.todo-item :refer (todo-item)]
-   [todolist.state :refer (get-state)]))
+   [todolist.state :refer (todos)]))
 
 (defn todos-list []
   [:ul {:class "items-list"}
-   (for [task (get-state)]
-     ^{:key task} [todo-item task])])
+   (for [todo (todos)]
+     ^{:key todo} [todo-item todo])])
