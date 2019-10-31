@@ -5,7 +5,7 @@ html, body, #app {
 /* main */
 
 .main {
-    width: 300px;
+    width: 600px;
     margin: 30px auto auto;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -62,11 +62,6 @@ html, body, #app {
 
 .todos-list > * {
     box-sizing: border-box;
-    margin-bottom: 15px;
-}
-
-.todos-list > *:last-child {
-    margin-bottom: 0;
 }
 
 /* todo-item */
@@ -76,6 +71,12 @@ html, body, #app {
     flex-direction: row;
     justify-content: space-between;
     vertical-align: middle;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.todo-item:first-child {
+    padding: 0 0 10px;
 }
 
 .todo-item > * {
