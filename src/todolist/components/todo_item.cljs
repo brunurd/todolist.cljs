@@ -11,7 +11,7 @@
                              (toggle-todo! (:id item-data) (not checked))))
         on-remove-handler (fn []
                             (remove-todo! (:id item-data)))]
-    [:li {:class (str "item " (:id item-data))}
+    [:li {:class "todo-item" :id (:id item-data)}
      [:input {:type "checkbox"
               :checked (not (:active item-data))
               :on-change on-check-handler}]

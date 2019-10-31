@@ -4,6 +4,6 @@
    [todolist.state :refer (todos)]))
 
 (defn todos-list []
-  [:ul {:class "items-list"}
+  [:ul {:class "todos-list"}
    (for [todo (todos)]
      ^{:key todo} [todo-item todo])])

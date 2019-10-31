@@ -16,10 +16,10 @@
                                     :active true
                                     :name @new-todo})
                               (reset! new-todo "")))]
-    [:form {:class "form"
+    [:form {:class "add-todo"
             :onSubmit on-submit-handler}
      [:input {:type "text"
               :placeholder "Type a todo text here..."
               :value @new-todo
               :on-change on-change-handler}]
-     [:button {:type "submit" :style {:margin-left 12}} "Add"]]))
+     [:button {:type "submit"} "Add"]]))
