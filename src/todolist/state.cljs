@@ -9,11 +9,11 @@
 (defn add-todo! [todo]
   (swap! todos-data conj todo))
 
-(defn toggle-todo! [id active]
+(defn update-todo! [id k v]
   (swap! todos-data (fn [todo-items]
                 (map (fn [item]
                        (if (= (:id item) id)
-                         (assoc item :active active)
+                         (assoc item k v)
                          item)) todo-items))))
 
 (defn remove-todo! [id]
