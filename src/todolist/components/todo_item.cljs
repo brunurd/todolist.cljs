@@ -1,6 +1,6 @@
 (ns todolist.components.todo-item
-  (:require 
-   [todolist.state :refer (swap-active rm)]))
+  (:require
+   [todolist.state :refer (toggle-todo! remove-todo!)]))
 
 (def active-style {:text-decoration "none" :color "black"})
 (def done-style {:text-decoration "line-through" :color "gray"})
@@ -8,9 +8,9 @@
 (defn todo-item [item-data]
   (let [on-check-handler (fn [e]
                            (let [checked (-> e .-target .-checked)]
-                             (swap-active (:id item-data) (not checked))))
+                             (toggle-todo! (:id item-data) (not checked))))
         on-remove-handler (fn []
-                            (rm (:id item-data)))]
+                            (remove-todo! (:id item-data)))]
     [:li {:class (str "item " (:id item-data))}
      [:input {:type "checkbox"
               :checked (not (:active item-data))

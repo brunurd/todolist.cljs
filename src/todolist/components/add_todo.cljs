@@ -1,7 +1,7 @@
 (ns todolist.components.add-todo
   (:require
    [reagent.core :as r]
-   [todolist.state :refer (add)]))
+   [todolist.state :refer (add-todo!)]))
 
 (def new-task (r/atom ""))
 
@@ -12,7 +12,7 @@
         on-submit-handler (fn [e]
                             (.preventDefault e)
                             (when (not (= @new-task ""))
-                              (add {:id (js/Date.now)
+                              (add-todo! {:id (js/Date.now)
                                     :active true
                                     :name @new-task})
                               (reset! new-task "")))]

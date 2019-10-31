@@ -6,17 +6,17 @@
 
 (defn get-state [] @data)
 
-(defn add [todo]
+(defn add-todo! [todo]
   (swap! data conj todo))
 
-(defn swap-active [id active]
+(defn toggle-todo! [id active]
   (swap! data (fn [array]
                 (map (fn [item]
                        (if (= (:id item) id)
                          (assoc item :active active)
                          item)) array))))
 
-(defn rm [id]
+(defn remove-todo! [id]
   (swap! data (fn [array]
                 (filter (fn [item]
                           (not (= (:id item) id)))
