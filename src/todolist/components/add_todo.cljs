@@ -1,7 +1,7 @@
 (ns todolist.components.add-todo
   (:require
    [reagent.core :as r]
-   [todolist.state :refer (add-task get-state)]))
+   [todolist.state :refer (add)]))
 
 (def new-task (r/atom ""))
 
@@ -11,9 +11,11 @@
                               (reset! new-task value)))
         on-submit-handler (fn [e]
                             (.preventDefault e)
-                            (add-task {:id (count (get-state))
-                                       :active true
-                                       :name @new-task}))]
+                            (when (not (= @new-task ""))
+                              (add {:id (js/Date.now)
+                                    :active true
+                                    :name @new-task})
+                              (reset! new-task "")))]
     [:form {:class "form"
             :onSubmit on-submit-handler}
      [:input {:name "new-task"

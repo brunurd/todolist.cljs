@@ -1,5 +1,5 @@
 (ns todolist.components.todos-list
-  (:require 
+  (:require
    [todolist.components.todo-item :refer (todo-item)]
    [todolist.state :refer (get-state)]))
 
