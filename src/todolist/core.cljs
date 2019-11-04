@@ -1,13 +1,15 @@
 (ns todolist.core
   (:require 
-   [reagent.core :as reagent]
-   [todolist.components.main :refer (main)]))
+   [reagent.core :as r]
+   [todolist.components.main :refer (main)]
+   [todolist.db.core :as db]))
 
 (defn start []
-  (reagent/render-component [main]
-                            (. js/document (getElementById "app"))))
+  (r/render-component [main]
+                      (. js/document (getElementById "app"))))
 
 (defn ^:export init []
+  (db/init)
   (start))
 
 (defn stop []
