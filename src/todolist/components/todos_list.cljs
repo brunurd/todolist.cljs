@@ -5,5 +5,6 @@
 
 (defn todos-list []
   [:ul {:class "todos-list"}
-   (for [todo @(rf/subscribe [:todos])]
-     ^{:key todo} [todo-item todo])])
+   (map (fn [todo]
+          ^{:key todo} [todo-item todo])
+        @(rf/subscribe [:todos]))])
