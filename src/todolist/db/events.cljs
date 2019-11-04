@@ -23,13 +23,11 @@
             (not (= (:id item) id)))
           todos))
 
-; TODO: Try to use assoc-in.
 (rf/reg-event-fx
  :update-todo
  (fn [{:keys [db]} [_ id k v]]
    {:db (assoc db :todos (update-handler (:todos db) id k v))}))
 
-; TODO: Try to use assoc-in.
 (rf/reg-event-fx
  :remove-todo
  (fn [{:keys [db]} [_ id]]
