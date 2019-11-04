@@ -3,13 +3,14 @@
  ["src"]
 
  :dependencies [[binaryage/devtools "0.9.7"]
-                [reagent "0.8.0-alpha2"]]
+                [reagent "0.8.0-alpha2"]
+                [re-frame "0.10.6"]]
 
  ;; set an nrepl port for connection to a REPL.
  :nrepl        {:port 8777}
 
  :builds
- {:app {:target :browser
+ {:todolist-app {:target :browser
         :output-dir "public/js/compiled"
         :asset-path "/js/compiled"
 
